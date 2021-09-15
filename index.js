@@ -100,10 +100,10 @@ Use the higher order function getAverageGoals to do the following:
 */
 
 function getAverageGoals(getFinalsCbWithData) {
-    const finalsArr = getFinalsCbWithData;
-    finalsArr.reduce((acc, cur) => {
-        
-    })
+    const totalGoals = getFinalsCbWithData.map(match => {
+       return match["Home Team Goals"] + match["Away Team Goals"];
+    }).reduce((acc, cur) => acc + cur, 0)
+    return ((totalGoals/getFinalsCbWithData.length).toFixed(2));
 }
 getAverageGoals(getFinals(fifaData))
 
